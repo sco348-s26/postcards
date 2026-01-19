@@ -12,6 +12,8 @@ on:
 jobs:
   build-postcards:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Required for pushing to gh-pages branch
 
     steps:
       - name: Checkout repository
