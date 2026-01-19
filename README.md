@@ -18,7 +18,7 @@ This repository contains a template for building a single-page personal website 
 
 ### Local Development
 
-1. Clone this repository
+1. For our class, accept the classroom project.  (If someone else wants to use this, fork or clone the project).
 2. Open `postcards.Rproj` in RStudio (or open the directory in your preferred R environment)
 3. Install required packages:
    ```r
