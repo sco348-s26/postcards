@@ -1,108 +1,79 @@
 # postcards
-Make a postcard site
+
+A template project for creating a personal postcard site using the [postcards](https://github.com/seankross/postcards) R package.
 
 ## Overview
 
-This repository contains an R script for generating beautiful postcard-style personal websites using the [postcards](https://github.com/seankross/postcards) R package.
+This repository contains a template for building a single-page personal website (postcard) using R Markdown and the postcards package. The site is automatically built and deployed using a custom GitHub Actions workflow.
 
-## Prerequisites
+## Getting Started
 
-- R (version 3.6 or higher)
-- The following R packages will be automatically installed when running the script:
-  - `postcards`
+### Prerequisites
+
+- R (version 4.0.0 or higher)
+- RStudio (optional, but recommended)
+- The following R packages:
   - `rmarkdown`
+  - `postcards`
 
-## Usage
+### Local Development
 
-### Interactive Mode
-
-Run the script without arguments to use interactive mode:
-
-```bash
-Rscript generate_postcard.R
-```
-
-You'll be prompted to enter:
-- Template name (jolla, jolla-blue, trestles, onofre, or solana)
-- Your name
-- Email address
-- GitHub username
-- Linkedin username
-
-### Command Line Mode
-
-Create a new postcard with a specific template:
-
-```bash
-Rscript generate_postcard.R create [template]
-```
-
-Example:
-```bash
-Rscript generate_postcard.R create jolla
-```
-
-Render an existing postcard to HTML:
-
-```bash
-Rscript generate_postcard.R render [file.Rmd]
-```
-
-Example:
-```bash
-Rscript generate_postcard.R render index.Rmd
-```
-
-### Using in R
-
-You can also source the script in R and use its functions directly:
-
-```r
-source("generate_postcard.R")
-
-# Create a postcard
-create_postcard(
-  template = "jolla",
-  title = "John Doe",
-  author = "John Doe",
-  email = "john.doe@example.com",
-  github = "johndoe",
-  twitter = "johndoe"
-)
-
-# Render the postcard
-render_postcard("index.Rmd")
-```
-
-## Available Templates
-
-- **jolla**: A simple template with a large profile photo
-- **jolla-blue**: A blue variation of the jolla template
-- **trestles**: A two-column layout with photo on the left
-- **onofre**: A minimalist single-column design
-- **solana**: A template with a sidebar layout
-
-## Example
-
-An example postcard file (`example_postcard.Rmd`) is included in this repository. You can use it as a starting point for your own postcard.
+1. Clone this repository
+2. Open `postcards.Rproj` in RStudio (or open the directory in your preferred R environment)
+3. Install required packages:
+   ```r
+   install.packages(c('rmarkdown', 'postcards'))
+   ```
+4. Edit `index.Rmd` with your personal information
+5. (Optional) Add a `profile.jpg` image to the root directory
+6. Render the site:
+   ```r
+   rmarkdown::render('index.Rmd')
+   ```
+7. Open `index.html` in your browser to preview
 
 ## Customization
 
-After generating a postcard:
+### Editing Your Postcard
 
-1. Edit the `.Rmd` file to customize your content
-2. Add your photo as `image.jpg` in the same directory (or update the `image` field in the YAML header)
-3. Render the postcard to HTML using `rmarkdown::render()` or the provided script
+Edit the `index.Rmd` file to customize your postcard:
+- Update the `title` field with your name
+- Add your profile image filename to the `image` field
+- Update social links under `links`
+- Modify the Bio, Education, and Experience sections
 
-## Output
+### Changing the Template
 
-The script generates:
-- An R Markdown file (`.Rmd`) with your postcard content
-- When rendered, an HTML file that can be hosted as a static website
+The postcards package includes several templates:
+- `trestles` (default)
+- `jolla`
+- `jolla-blue`
+- `onofre`
+- `solana`
 
-## Hosting
+To use a different template, change the `output` field in `index.Rmd`:
+```yaml
+output:
+  postcards::jolla
+```
 
-You can host your postcard on:
-- GitHub Pages
-- Netlify
-- Any static site hosting service
+## Deployment
+
+### GitHub Actions Workflow
+
+This repository includes a custom GitHub Actions workflow (`.github/workflows/build-postcards.yml`) that:
+1. Automatically builds the postcard site when changes are pushed to the `main` branch
+2. Uploads the built site as an artifact
+3. Deploys to GitHub Pages (optional)
+
+### Enabling GitHub Pages
+
+To deploy your postcard site to GitHub Pages:
+1. Go to your repository Settings
+2. Navigate to Pages
+3. Select the `gh-pages` branch as the source
+4. Your site will be available at `https://<username>.github.io/<repository-name>/`
+
+## License
+
+This template is provided as-is for anyone to use and modify.
