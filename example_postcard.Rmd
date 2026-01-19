@@ -1,0 +1,29 @@
+---
+title: "Example Postcard"
+image: "image.jpg"
+links:
+  - label: Email
+    url: "mailto:your.email@example.com"
+  - label: GitHub
+    url: "https://github.com/yourusername"
+  - label: Twitter
+    url: "https://twitter.com/yourusername"
+output:
+  postcards::jolla
+---
+
+## Bio
+
+Write a brief bio about yourself here. This is a great place to share your background, interests, and what you're currently working on.
+
+## Education
+
+**University Name** | City, State
+
+Ph.D. in Subject | Year - Year
+
+## Experience
+
+**Job Title** | Company Name | Year - Year
+
+Brief description of your role and responsibilities.
